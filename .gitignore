@@ -1,0 +1,4 @@
+# Ignorar entorno virtual
+venv_Tusino/
+.venv/
+.env/
