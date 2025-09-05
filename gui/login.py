@@ -1,6 +1,7 @@
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, QIODevice
 from data.usuario import UsuarioData
+from gui.main import MainWindow
 from model.usuario import Usuario
 from resources import imagenes_rc
 from PySide6.QtWidgets import QMessageBox
@@ -30,7 +31,8 @@ class Login():
             usuData = UsuarioData()
             res=usuData.login(usu)
             if res:
-                self.login.lblMensaje.setText("OK") 
+                self.main = MainWindow()
+                self.login.hide()
             else:
                 self.login.lblMensaje.setText("Datos de acceso incorrectos") 
 

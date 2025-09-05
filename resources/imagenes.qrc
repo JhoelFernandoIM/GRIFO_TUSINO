@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="xy">
+    <file>images/user_logo.png</file>
     <file>images/logo.png</file>
   </qresource>
 </RCC>

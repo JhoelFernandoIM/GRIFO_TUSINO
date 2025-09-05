@@ -10,22 +10,537 @@
     <height>599</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <pointsize>10</pointsize>
+   </font>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::FocusPolicy::NoFocus</enum>
+  </property>
   <property name="windowTitle">
    <string>GrifoT - Transferencias</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <property name="layoutDirection">
+   <enum>Qt::LayoutDirection::LeftToRight</enum>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* Fondo de la ventana */
+QMainWindow {
+    background-color: #F4F4F4;
+}
+
+/* ==========================
+   MENU BAR (barra superior)
+   ========================== */
+QMenuBar {
+    background-color: #33373B;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QMenuBar::item {
+    background: transparent;
+    padding: 12px 24px;
+}
+
+QMenuBar::item:selected { /* Hover */
+    background: #2ABF9E;
+    color: #FFFFFF;
+    border-radius: 5px;
+}
+
+QMenuBar::item:pressed {
+    background: #1F8C72;
+}
+
+/* ==========================
+   MENÚS DESPLEGABLES
+   ========================== */
+QMenu {
+    background-color: #33373B;
+    color: #FFFFFF;
+    border: 1px solid #2ABF9E;
+    padding: 5px;
+}
+
+QMenu::item {
+    padding: 6px 20px;
+    background: transparent;
+}
+
+QMenu::item:selected { /* Hover */
+    background: #2ABF9E;
+    border-radius: 5px;
+}
+
+/* ==========================
+   TOOLBAR (acciones con icono/botón)
+   ========================== */
+QToolBar {
+    background: #33373B;
+    border: none;
+    spacing: 6px;
+    padding: 4px;
+}
+
+/* Los QAction en la toolbar aparecen como QToolButton */
+QToolButton {
+    background: transparent;
+    color: #FFFFFF;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QToolButton:hover {
+    background: #2ABF9E;
+    color: #FFFFFF;
+}
+
+QToolButton:pressed {
+    background: #1F8C72;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QFrame" name="frame_3">
+      <property name="maximumSize">
+       <size>
+        <width>200</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(51, 55, 59);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>10</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Información</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>40</y>
+         <width>91</width>
+         <height>91</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: 3px solid #2ABF9E;
+border-radius: 3px;
+paddin 4px;</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>../resources/images/user_logo.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>150</y>
+         <width>51</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Usuario:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>170</y>
+         <width>41</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Rol:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>250</y>
+         <width>51</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Módulo</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>300</y>
+         <width>51</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>Ventana</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txtCurrentUser">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>150</y>
+         <width>101</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>User</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txtCurrentRol">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>170</y>
+         <width>101</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>RolN</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_10">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>270</y>
+         <width>141</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(244, 244, 244);
+color: rgb(29, 29, 29);</string>
+       </property>
+       <property name="text">
+        <string>Dashboard General</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_11">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>330</y>
+         <width>141</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(244, 244, 244);
+color: rgb(29, 29, 29);</string>
+       </property>
+       <property name="text">
+        <string>Principal</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="minimumSize">
+       <size>
+        <width>600</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>1300</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(244, 244, 244);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="frame_2">
+      <property name="maximumSize">
+       <size>
+        <width>200</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(51, 55, 59);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>10</y>
+         <width>151</width>
+         <height>151</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>../resources/images/logo.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
      <width>999</width>
-     <height>33</height>
+     <height>44</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuArchivo">
+    <property name="title">
+     <string>Archivo</string>
+    </property>
+    <addaction name="btnRegistrar_Transferencias"/>
+    <addaction name="btnReportar_Transferencia"/>
+    <addaction name="btnHistorial_de_Transferencias"/>
+   </widget>
+   <widget class="QMenu" name="menuInventarios">
+    <property name="title">
+     <string>Inventarios</string>
+    </property>
+    <addaction name="actionDesarrolladores"/>
+    <addaction name="actionInventario_actual"/>
+   </widget>
+   <widget class="QMenu" name="menuVentas">
+    <property name="title">
+     <string>Ventas</string>
+    </property>
+    <addaction name="actionRegistrar_ventas"/>
+    <addaction name="actionHistorial_de_ventas"/>
+   </widget>
+   <widget class="QMenu" name="menuGesti_n">
+    <property name="title">
+     <string>Gestión Clientes y cuentas</string>
+    </property>
+    <addaction name="actionGesti_n_de_clientes"/>
+    <addaction name="actionGesti_n_de_cuentas"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuGesti_n_de_pagos">
+    <property name="title">
+     <string>Gestión de pagos</string>
+    </property>
+    <addaction name="actionRegistrar_pago"/>
+    <addaction name="actionHistorial_pagos"/>
+   </widget>
+   <widget class="QMenu" name="menuGesti_n_de_empleados">
+    <property name="title">
+     <string>Gestión de empleados</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuREportes">
+    <property name="title">
+     <string>Reportes</string>
+    </property>
+   </widget>
+   <addaction name="menuArchivo"/>
+   <addaction name="menuInventarios"/>
+   <addaction name="menuVentas"/>
+   <addaction name="menuGesti_n"/>
+   <addaction name="menuGesti_n_de_pagos"/>
+   <addaction name="menuGesti_n_de_empleados"/>
+   <addaction name="menuREportes"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionDesarrolladores">
+   <property name="text">
+    <string>Actualizar inventario</string>
+   </property>
+  </action>
+  <action name="btnRegistrar_Transferencias">
+   <property name="text">
+    <string>Registrar Transferencias</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="btnReportar_Transferencia">
+   <property name="text">
+    <string>Reportar Transferencia</string>
+   </property>
+  </action>
+  <action name="btnHistorial_de_Transferencias">
+   <property name="text">
+    <string>Historial de Transferencias</string>
+   </property>
+  </action>
+  <action name="actionRegistrar_ventas">
+   <property name="text">
+    <string>Registrar ventas</string>
+   </property>
+  </action>
+  <action name="actionGesti_n_de_clientes">
+   <property name="text">
+    <string>Gestión de clientes</string>
+   </property>
+  </action>
+  <action name="actionGesti_n_de_cuentas">
+   <property name="text">
+    <string>Gestión de cuentas</string>
+   </property>
+  </action>
+  <action name="actionRegistrar_pago">
+   <property name="text">
+    <string>Registrar pago</string>
+   </property>
+  </action>
+  <action name="actionHistorial_pagos">
+   <property name="text">
+    <string>Historial pagos</string>
+   </property>
+  </action>
+  <action name="actionInventario_actual">
+   <property name="text">
+    <string>Inventario actual</string>
+   </property>
+  </action>
+  <action name="actionHistorial_de_ventas">
+   <property name="text">
+    <string>Historial de ventas</string>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resources/imagenes.qrc"/>
+ </resources>
  <connections/>
 </ui>
