@@ -15,29 +15,19 @@ class MainWindow():
 
         self.initGUI()
         self.main.showMaximized()
+
     def initGUI(self):
         self.main.btnRegistrar_Transferencias.triggered.connect(self.abrirRegistro)
         
 
     def abrirRegistro(self):
         self.registro1 = RegistroWindow()
-        self.registro1.v.btnRegistrar.clicked.connect(self.registrarTransaccion)
-        self.registro1
+        self.registro1.submitted.connect(self.onRegistroSubmitted)
+        self.registro1.show()
+    
+    def onRegistroSubmitted(self, data):
+        # aquí procesas/guardas/actualizas UI principal
+        QMessageBox.information(self.main, "OK", f"Registro recibido: {data}")
+        # ejemplo: actualizar tabla en main, etc.
 
-    def registrarTransaccion(self):
-        if self.registro1.v.cbTipo.currentText() == "--- Seleccione una opción":
-            mBox = QMessageBox()
-            mBox.setText("Debe seleccionar un tipo de documento")
-            mBox.exec()
-        elif len(self.registro1.v.txtDocumento.text())<4:
-            mBox = QMessageBox()
-            mBox.setText("Debe ingresar un documento válido")
-            mBox.exec()
-        elif self.registro1.v.cbMotivo.currentText() == "--- Seleccione una opción":
-            mBox = QMessageBox()
-            mBox.setText("Debe seleccionar el motivo")
-            mBox.exec()
-        elif not self.registro1.v.txtMonto.text().isnumeric():
-            mBox = QMessageBox()
-            mBox.setText("Debe ingresar un monto válido")
-            mBox.exec()
+    

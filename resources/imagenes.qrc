@@ -1,6 +1,7 @@
 <RCC>
   <qresource prefix="xy">
-    <file>images/user_logo.png</file>
     <file>images/logo.png</file>
+    <file>images/banner_tusino.jpg</file>
+    <file>images/user.jpg</file>
   </qresource>
 </RCC>
