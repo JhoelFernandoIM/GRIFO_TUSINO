@@ -1,17 +1,16 @@
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, QIODevice, QObject, Signal
 
-from model.usuario import Usuario
-from resources import imagenes_rc
+
 from PySide6.QtWidgets import QMessageBox
 
-class RegistroWindow(QObject):
+class RegistroVenta(QObject):
     submitted = Signal(dict)  # emite un dict con los datos validados
 
     def __init__(self, parent=None):
         super().__init__(parent)
 
-        ui_file_name = "gui/registro.ui"
+        ui_file_name = "gui/ventas_window.ui"
         ui_file = QFile(ui_file_name)
 
         if not ui_file.open(QIODevice.ReadOnly):
@@ -22,7 +21,7 @@ class RegistroWindow(QObject):
         ui_file.close()
 
         # Conectar el botón internamente para mantener responsabilidad en este módulo
-        self.v.btnRegistrar.clicked.connect(self.registrarTransaccion)
+        self.v.btnRegistrarVenta.clicked.connect(self.registrarVenta)
 
         # si se pasa un callback, lo conectamos al botón
 
@@ -30,28 +29,25 @@ class RegistroWindow(QObject):
     def show(self):
         self.v.show()
 
-    def registrarTransaccion(self):
-        if self.registro1.v.cbTipo.currentText() == "--- Seleccione una opción":
+    def registrarVenta(self):
+        if self.v.cmbCliente.currentText() == "--- Seleccione una opción":
             mBox = QMessageBox()
-            mBox.setText("Debe seleccionar un tipo de documento")
+            mBox.setText("Debe seleccionar un cliente de la lista")
             mBox.exec()
-        elif len(self.registro1.v.txtDocumento.text())<4:
+        elif self.v.cmbSurtidor.currentText() == "--- Seleccione una opción":
             mBox = QMessageBox()
-            mBox.setText("Debe ingresar un documento válido")
+            mBox.setText("Debe seleccionar un Surtidor disponible")
             mBox.exec()
-        elif self.registro1.v.cbMotivo.currentText() == "--- Seleccione una opción":
+        elif self.v.cmbMetodoPago.currentText() == "--- Seleccione una opción":
             mBox = QMessageBox()
-            mBox.setText("Debe seleccionar el motivo")
-            mBox.exec()
-        elif not self.registro1.v.txtMonto.text().isnumeric():
-            mBox = QMessageBox()
-            mBox.setText("Debe ingresar un monto válido")
+            mBox.setText("Debe seleccionar un Método de pago de la lista")
             mBox.exec()
 
         data = {
-            "tipo": self.v.cbTipo.currentText(),
-            "documento": self.v.txtDocumento.text(),
-            "motivo": self.v.cbMotivo.currentText(),
+            "cliente": self.v.cbTipo.currentText(),
+            "surtidor": self.v.txtDocumento.text(),
+            "metodo": self.v.cbMotivo.currentText(),
+            "litro": self.v.txtLitros.text(),
             "monto": float(self.v.txtMonto.text()),
             # agrega lo que necesites
         }

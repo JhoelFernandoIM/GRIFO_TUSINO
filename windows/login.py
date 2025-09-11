@@ -1,7 +1,7 @@
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, QIODevice
 from data.usuario import UsuarioData
-from gui.main import MainWindow
+from windows.main import MainWindow
 from model.usuario import Usuario
 from resources import imagenes_rc
 from PySide6.QtWidgets import QMessageBox

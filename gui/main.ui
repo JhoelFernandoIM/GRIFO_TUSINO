@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1141</width>
-    <height>715</height>
+    <width>1166</width>
+    <height>706</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -219,7 +219,7 @@ border-radius: 3px;
         <rect>
          <x>10</x>
          <y>170</y>
-         <width>41</width>
+         <width>81</width>
          <height>16</height>
         </rect>
        </property>
@@ -232,7 +232,7 @@ border-radius: 3px;
         <string notr="true">color: rgb(255, 255, 255);</string>
        </property>
        <property name="text">
-        <string>Rol:</string>
+        <string>Turno activo :</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_6">
@@ -277,7 +277,7 @@ border-radius: 3px;
         <string>Ventana</string>
        </property>
       </widget>
-      <widget class="QLabel" name="txtCurrentUser">
+      <widget class="QLabel" name="lblEmpleado">
        <property name="geometry">
         <rect>
          <x>70</x>
@@ -298,12 +298,12 @@ border-radius: 3px;
         <string>User</string>
        </property>
       </widget>
-      <widget class="QLabel" name="txtCurrentRol">
+      <widget class="QLabel" name="lblTurnoActivo">
        <property name="geometry">
         <rect>
-         <x>70</x>
+         <x>110</x>
          <y>170</y>
-         <width>101</width>
+         <width>41</width>
          <height>16</height>
         </rect>
        </property>
@@ -316,7 +316,7 @@ border-radius: 3px;
         <string notr="true">color: rgb(255, 255, 255);</string>
        </property>
        <property name="text">
-        <string>RolN</string>
+        <string>turno</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_10">
@@ -426,24 +426,27 @@ color: rgb(29, 29, 29);</string>
            </sizepolicy>
           </property>
           <layout class="QGridLayout" name="gridLayout">
-           <item row="4" column="0">
-            <spacer name="verticalSpacer_2">
-             <property name="orientation">
-              <enum>Qt::Orientation::Vertical</enum>
-             </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Policy::Fixed</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
+           <item row="6" column="0">
+            <widget class="QLabel" name="label_9">
+             <property name="minimumSize">
               <size>
-               <width>20</width>
+               <width>0</width>
                <height>200</height>
               </size>
              </property>
-            </spacer>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="../resources/imagenes.qrc">:/xy/images/banner_tusino.jpg</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
-           <item row="0" column="0">
-            <spacer name="verticalSpacer">
+           <item row="2" column="0">
+            <spacer name="verticalSpacer_4">
              <property name="orientation">
               <enum>Qt::Orientation::Vertical</enum>
              </property>
@@ -458,33 +461,129 @@ color: rgb(29, 29, 29);</string>
              </property>
             </spacer>
            </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="labelPortada">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
+           <item row="4" column="0">
+            <widget class="QTableWidget" name="tblTanques">
              <property name="minimumSize">
               <size>
-               <width>460</width>
-               <height>220</height>
+               <width>0</width>
+               <height>200</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>960</width>
-               <height>540</height>
+               <width>950</width>
+               <height>300</height>
               </size>
              </property>
-             <property name="text">
-              <string/>
+             <property name="font">
+              <font>
+               <pointsize>-1</pointsize>
+              </font>
              </property>
-             <property name="pixmap">
-              <pixmap resource="../resources/imagenes.qrc">:/xy/images/banner_tusino.jpg</pixmap>
+             <property name="styleSheet">
+              <string notr="true">QTableWidget {
+    background-color: #1e2a38; /* azul oscuro */
+    color: #e0f7e9; /* texto verde muy claro */
+    border: 2px solid #2ecc71; /* verde */
+    gridline-color: #2ecc71;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+QHeaderView::section {
+    background-color: #2ecc71; /* verde */
+    color: #1e2a38; /* azul oscuro para contraste */
+    padding: 6px;
+    font-weight: bold;
+    border: none;
+}
+
+QTableWidget::item {
+    selection-background-color: #2ecc71; 
+    selection-color: #1e2a38;
+}
+
+QScrollBar:vertical {
+    background: #1e2a38;
+    width: 10px;
+    margin: 0px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical {
+    background: #2ecc71;
+    min-height: 20px;
+    border-radius: 5px;
+}
+</string>
              </property>
+             <property name="sizeAdjustPolicy">
+              <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+             </property>
+             <property name="updateThreshold">
+              <number>200</number>
+             </property>
+             <property name="rowCount">
+              <number>5</number>
+             </property>
+             <attribute name="horizontalHeaderCascadingSectionResizes">
+              <bool>true</bool>
+             </attribute>
+             <attribute name="horizontalHeaderDefaultSectionSize">
+              <number>200</number>
+             </attribute>
+             <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+              <bool>false</bool>
+             </attribute>
+             <attribute name="horizontalHeaderStretchLastSection">
+              <bool>true</bool>
+             </attribute>
+             <attribute name="verticalHeaderVisible">
+              <bool>false</bool>
+             </attribute>
+             <attribute name="verticalHeaderCascadingSectionResizes">
+              <bool>false</bool>
+             </attribute>
+             <attribute name="verticalHeaderHighlightSections">
+              <bool>true</bool>
+             </attribute>
+             <attribute name="verticalHeaderStretchLastSection">
+              <bool>true</bool>
+             </attribute>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <row/>
+             <column>
+              <property name="text">
+               <string>id_inventario</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Nº Tanque</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Litros disponibles</string>
+              </property>
+             </column>
             </widget>
+           </item>
+           <item row="7" column="0">
+            <spacer name="verticalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
            </item>
            <item row="1" column="0">
             <widget class="QLabel" name="label_8">
@@ -504,10 +603,55 @@ color: rgb(29, 29, 29);</string>
              </property>
             </widget>
            </item>
+           <item row="0" column="0">
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_12">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Estado de los tanques</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <spacer name="verticalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>50</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="page_2"/>
          <widget class="QWidget" name="page"/>
+         <widget class="QWidget" name="page_2"/>
         </widget>
        </item>
       </layout>
@@ -567,7 +711,7 @@ color: rgb(29, 29, 29);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1141</width>
+     <width>1166</width>
      <height>44</height>
     </rect>
    </property>
@@ -579,52 +723,32 @@ color: rgb(29, 29, 29);</string>
     <addaction name="btnReportar_Transferencia"/>
     <addaction name="btnHistorial_de_Transferencias"/>
    </widget>
-   <widget class="QMenu" name="menuInventarios">
-    <property name="title">
-     <string>Inventarios</string>
-    </property>
-    <addaction name="actionDesarrolladores"/>
-    <addaction name="actionInventario_actual"/>
-   </widget>
    <widget class="QMenu" name="menuVentas">
     <property name="title">
      <string>Ventas</string>
     </property>
-    <addaction name="actionRegistrar_ventas"/>
-    <addaction name="actionHistorial_de_ventas"/>
+    <addaction name="btnVentas"/>
    </widget>
-   <widget class="QMenu" name="menuGesti_n">
+   <widget class="QMenu" name="menuTurnos">
     <property name="title">
-     <string>Gestión Clientes y cuentas</string>
-    </property>
-    <addaction name="actionGesti_n_de_clientes"/>
-    <addaction name="actionGesti_n_de_cuentas"/>
-    <addaction name="separator"/>
-   </widget>
-   <widget class="QMenu" name="menuGesti_n_de_pagos">
-    <property name="title">
-     <string>Gestión de pagos</string>
-    </property>
-    <addaction name="actionRegistrar_pago"/>
-    <addaction name="actionHistorial_pagos"/>
-   </widget>
-   <widget class="QMenu" name="menuGesti_n_de_empleados">
-    <property name="title">
-     <string>Gestión de empleados</string>
+     <string>Turnos</string>
     </property>
    </widget>
-   <widget class="QMenu" name="menuREportes">
+   <widget class="QMenu" name="menuAdministraci_n">
+    <property name="title">
+     <string>Administración</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuReportes">
     <property name="title">
      <string>Reportes</string>
     </property>
    </widget>
    <addaction name="menuArchivo"/>
-   <addaction name="menuInventarios"/>
    <addaction name="menuVentas"/>
-   <addaction name="menuGesti_n"/>
-   <addaction name="menuGesti_n_de_pagos"/>
-   <addaction name="menuGesti_n_de_empleados"/>
-   <addaction name="menuREportes"/>
+   <addaction name="menuTurnos"/>
+   <addaction name="menuAdministraci_n"/>
+   <addaction name="menuReportes"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionDesarrolladores">
@@ -650,9 +774,9 @@ color: rgb(29, 29, 29);</string>
     <string>Historial de Transferencias</string>
    </property>
   </action>
-  <action name="actionRegistrar_ventas">
+  <action name="btnVentas">
    <property name="text">
-    <string>Registrar ventas</string>
+    <string>Punto de ventas (POS)</string>
    </property>
   </action>
   <action name="actionGesti_n_de_clientes">
@@ -680,7 +804,7 @@ color: rgb(29, 29, 29);</string>
     <string>Inventario actual</string>
    </property>
   </action>
-  <action name="actionHistorial_de_ventas">
+  <action name="f">
    <property name="text">
     <string>Historial de ventas</string>
    </property>

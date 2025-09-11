@@ -1,7 +1,8 @@
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, QIODevice
 
-from gui.registro import RegistroWindow
+from windows.registro import RegistroWindow
+from windows.ventas_window import RegistroVenta
 from resources import imagenes_rc
 from PySide6.QtWidgets import QMessageBox
 
@@ -18,6 +19,7 @@ class MainWindow():
 
     def initGUI(self):
         self.main.btnRegistrar_Transferencias.triggered.connect(self.abrirRegistro)
+        self.main.btnVentas.triggered.connect(self.abrirVentas)
         
 
     def abrirRegistro(self):
@@ -29,5 +31,10 @@ class MainWindow():
         # aquí procesas/guardas/actualizas UI principal
         QMessageBox.information(self.main, "OK", f"Registro recibido: {data}")
         # ejemplo: actualizar tabla en main, etc.
+
+    #Registro de ventas
+    def abrirVentas(self):
+        self.registroVenta = RegistroVenta()
+        self.registroVenta.show()
 
     
