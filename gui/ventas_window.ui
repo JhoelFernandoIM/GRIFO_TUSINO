@@ -260,8 +260,8 @@ border-radius: 6px;</string>
    <property name="geometry">
     <rect>
      <x>400</x>
-     <y>240</y>
-     <width>191</width>
+     <y>260</y>
+     <width>121</width>
      <height>21</height>
     </rect>
    </property>
@@ -594,9 +594,9 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>390</x>
-     <y>270</y>
+     <y>300</y>
      <width>590</width>
-     <height>231</height>
+     <height>191</height>
     </rect>
    </property>
    <property name="maximumSize">
@@ -787,7 +787,7 @@ QTableWidget {
    <property name="geometry">
     <rect>
      <x>520</x>
-     <y>240</y>
+     <y>260</y>
      <width>75</width>
      <height>24</height>
     </rect>
