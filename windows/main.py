@@ -7,6 +7,7 @@ from windows.ventas_window import RegistroVenta
 from resources import imagenes_rc
 from PySide6.QtWidgets import QMessageBox, QApplication, QMainWindow
 
+import sys
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -14,12 +15,22 @@ class MainWindow(QMainWindow):
         
         ui_file_name = "gui/main.ui"
         ui_file = QFile(ui_file_name)
+        if not ui_file.open(QIODevice.ReadOnly):
+            raise FileNotFoundError(ui_file_name)
         loader = QUiLoader()
+        self.main = loader.load(ui_file, None)   # carga el widget
+        ui_file.close()
 
-        self.main = loader.load(ui_file, self)
+        # Si el .ui contiene un QMainWindow, loader.load devuelve ese QMainWindow
+        # Aseguramos que el QMainWindow sea la ventana toplevel correcta:
+        try:
+            # si el ui fue creado como QWidget y queremos usarlo como central:
+            self.setCentralWidget(self.main)
+        except Exception:
+            pass
 
         self.initGUI()
-        self.main.showMaximized()
+        self.showMaximized()  # <- mostrar la instancia QMainWindow, no el child
 
     def initGUI(self):
         self.main.btnPrincipal.triggered.connect(self.volverPrincipal)
@@ -54,6 +65,12 @@ class MainWindow(QMainWindow):
     def volverPrincipal(self):
         self.page_index = 0
         self.main.stackedWidget.setCurrentIndex(self.page_index)
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()  # <- importante para que quede visible
+    sys.exit(app.exec())
 
 
     

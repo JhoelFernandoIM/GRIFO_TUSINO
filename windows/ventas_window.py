@@ -46,14 +46,14 @@ class RegistroVenta(QDialog):
             mBox.setText("Debe seleccionar un Método de pago de la lista")
             mBox.exec()
 
-        data = {
-            "cliente": self.v.cbTipo.currentText(),
-            "surtidor": self.v.txtDocumento.text(),
-            "metodo": self.v.cbMotivo.currentText(),
-            "litro": self.v.txtLitros.text(),
-            "monto": float(self.v.txtMonto.text()),
+        #data = {
+            #"cliente": self.v.cbTipo.currentText(),
+            #"surtidor": self.v.txtDocumento.text(),
+            #"metodo": self.v.cbMotivo.currentText(),
+            #"litro": self.v.txtLitros.text(),
+            #"monto": float(self.v.txtMonto.text()),
             # agrega lo que necesites
-        }
+        #}
         # emite para que main (u otro) lo procese
-        self.submitted.emit(data)
+        #self.submitted.emit(data)
         self.accept()
