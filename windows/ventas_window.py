@@ -2,7 +2,7 @@ from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, QIODevice, QObject, Signal
 
 
-from PySide6.QtWidgets import QMessageBox, QDialog
+from PySide6.QtWidgets import QMessageBox, QDialog, QVBoxLayout
 
 class RegistroVenta(QDialog):
     submitted = Signal(dict)  # emite un dict con los datos validados
@@ -17,8 +17,11 @@ class RegistroVenta(QDialog):
             raise RuntimeError(f"No se puede abrir {ui_file_name}")
 
         loader = QUiLoader()
-        self.v = loader.load(ui_file, parent)
+        self.v = loader.load(ui_file, self)
         ui_file.close()
+
+        layout = QVBoxLayout(self)
+        layout.addWidget(self.v)
 
         # Conectar el botón internamente para mantener responsabilidad en este módulo
         self.v.btnRegistrarVenta.clicked.connect(self.registrarVenta)
@@ -31,15 +34,15 @@ class RegistroVenta(QDialog):
 
     def registrarVenta(self):
         if self.v.cmbCliente.currentText() == "--- Seleccione una opción":
-            mBox = QMessageBox()
+            mBox = QMessageBox(self)
             mBox.setText("Debe seleccionar un cliente de la lista")
             mBox.exec()
         elif self.v.cmbSurtidor.currentText() == "--- Seleccione una opción":
-            mBox = QMessageBox()
+            mBox = QMessageBox(self)
             mBox.setText("Debe seleccionar un Surtidor disponible")
             mBox.exec()
         elif self.v.cmbMetodoPago.currentText() == "--- Seleccione una opción":
-            mBox = QMessageBox()
+            mBox = QMessageBox(self)
             mBox.setText("Debe seleccionar un Método de pago de la lista")
             mBox.exec()
 
