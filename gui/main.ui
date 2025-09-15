@@ -455,7 +455,7 @@ color: rgb(29, 29, 29);</string>
           <number>1</number>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="pagePrincipal">
           <property name="sizePolicy">
@@ -787,7 +787,7 @@ color: black; </string>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_16">
+            <widget class="QLabel" name="lblEstadoTurno">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -852,7 +852,7 @@ color: black; </string>
                </spacer>
               </item>
               <item>
-               <widget class="QPushButton" name="btnRegistrarVenta">
+               <widget class="QPushButton" name="btnAbrirTurno">
                 <property name="enabled">
                  <bool>true</bool>
                 </property>
@@ -908,7 +908,7 @@ QPushButton:pressed {
                </spacer>
               </item>
               <item>
-               <widget class="QPushButton" name="btnRegistrarVenta_2">
+               <widget class="QPushButton" name="btnCerrarTurno">
                 <property name="minimumSize">
                  <size>
                   <width>206</width>
@@ -986,7 +986,7 @@ QPushButton:pressed {
                </spacer>
               </item>
               <item>
-               <widget class="QTableView" name="tableView">
+               <widget class="QTableView" name="tblTurnos">
                 <property name="minimumSize">
                  <size>
                   <width>650</width>
@@ -1013,7 +1013,875 @@ QPushButton:pressed {
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="page_2"/>
+         <widget class="QWidget" name="infra_widget">
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QLabel" name="label_15">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>81</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>100</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>16</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(51, 55, 59);</string>
+             </property>
+             <property name="text">
+              <string>Infraestructura - Gestión de activos físicos</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignmentFlag::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="lblEstadoTurno_2">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(2, 2, 2);</string>
+             </property>
+             <property name="text">
+              <string>Lista de activos físicos del grifo</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QScrollArea" name="scrollArea">
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="scrollAreaWidgetContents">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>707</width>
+                <height>1252</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_4">
+               <item>
+                <widget class="QFrame" name="frameTanque">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>370</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QFrame#frameTanque {
+    border: 2px solid black;   /* borde verde */
+    border-radius: 10px;         /* esquinas redondeadas */
+	background-color: rgb(110, 220, 163);
+}
+
+</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::Shape::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Raised</enum>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_2">
+                  <item row="1" column="0" rowspan="4">
+                   <widget class="QTableWidget" name="tblTanque">
+                    <property name="maximumSize">
+                     <size>
+                      <width>900</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QTableWidget::item:selected {
+    background-color: rgb(51, 55, 59);  /* el mismo turquesa que en el header */
+    color: white;                         /* texto blanco para contraste */
+}
+QHeaderView::section {
+    background-color: rgb(96, 206, 218); /* fondo turquesa */
+                      /* texto oscuro para buen contraste */
+    font-weight: bold;
+    padding: 6px;
+    border: 1px solid #CCCCCC;
+}
+
+QTableWidget {
+    gridline-color: #444;
+    background-color: #FFFFFF;  /* fondo de la tabla (oscuro) */
+    color: #33373B;             /* texto claro */
+	border-radius: 8px;
+}</string>
+                    </property>
+                    <property name="rowCount">
+                     <number>8</number>
+                    </property>
+                    <attribute name="horizontalHeaderCascadingSectionResizes">
+                     <bool>false</bool>
+                    </attribute>
+                    <attribute name="horizontalHeaderDefaultSectionSize">
+                     <number>217</number>
+                    </attribute>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <column>
+                     <property name="text">
+                      <string>id_tanque</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Tipo de combustible</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>capacidad total</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>unidad</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QPushButton" name="btnAgregarT">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>100</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="mouseTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::FocusPolicy::NoFocus</enum>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton {
+    background-color: #2ABF9E;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+QPushButton:pressed {
+ background-color: #239D81;
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>Agregar</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QPushButton" name="btnEditarT">
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="mouseTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::FocusPolicy::NoFocus</enum>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton {
+    background-color: #FFba6a;   /* naranja normal */
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+QPushButton:pressed {
+    background-color: #D4881C;   /* naranja más oscuro al presionar */
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>Editar</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="lblEstadoTurno_3">
+                    <property name="minimumSize">
+                     <size>
+                      <width>40</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>10</pointsize>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">color: rgb(2, 2, 2);
+background-color: transparent; /* no afectar el fondo interno */</string>
+                    </property>
+                    <property name="text">
+                     <string>Lista de tanques</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QPushButton" name="btnEliminarT">
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="mouseTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::FocusPolicy::NoFocus</enum>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton {
+    background-color: #DB0000;   /* naranja normal */
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+QPushButton:pressed {
+    background-color: #D4881C;   /* naranja más oscuro al presionar */
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>Eliminar</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <spacer name="verticalSpacer_5">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Vertical</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Policy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QFrame" name="frameSurtidor">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>370</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QFrame#frameSurtidor {
+    border: 2px solid black;   /* borde verde */
+    border-radius: 10px;         /* esquinas redondeadas */
+	background-color: rgb(249, 166, 124);
+}
+</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::Shape::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Raised</enum>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_3">
+                  <item row="1" column="0" rowspan="4">
+                   <widget class="QTableWidget" name="tblSurtidores">
+                    <property name="maximumSize">
+                     <size>
+                      <width>900</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QTableWidget::item:selected {
+    background-color: rgb(51, 55, 59);  /* el mismo turquesa que en el header */
+    color: white;                         /* texto blanco para contraste */
+}
+QHeaderView::section {
+    background-color: rgb(96, 206, 218); /* fondo turquesa */
+                      /* texto oscuro para buen contraste */
+    font-weight: bold;
+    padding: 6px;
+    border: 1px solid #CCCCCC;
+}
+
+QTableWidget {
+    gridline-color: #444;
+    background-color: #FFFFFF;  /* fondo de la tabla (oscuro) */
+    color: #33373B;             /* texto claro */
+	border-radius: 8px;
+}</string>
+                    </property>
+                    <property name="rowCount">
+                     <number>8</number>
+                    </property>
+                    <attribute name="horizontalHeaderCascadingSectionResizes">
+                     <bool>false</bool>
+                    </attribute>
+                    <attribute name="horizontalHeaderDefaultSectionSize">
+                     <number>174</number>
+                    </attribute>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <column>
+                     <property name="text">
+                      <string>id_surtidor</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Código</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Ubicación</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Tipo de combustible</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Estado</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QPushButton" name="btnAgregarS">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>100</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="mouseTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::FocusPolicy::NoFocus</enum>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton {
+    background-color: #2ABF9E;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+QPushButton:pressed {
+ background-color: #239D81;
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>Agregar</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QPushButton" name="btnEditarS">
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="mouseTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::FocusPolicy::NoFocus</enum>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton {
+    background-color: #FFba6a;   /* naranja normal */
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+QPushButton:pressed {
+    background-color: #D4881C;   /* naranja más oscuro al presionar */
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>Editar</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="lblEstadoTurno_4">
+                    <property name="minimumSize">
+                     <size>
+                      <width>40</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>10</pointsize>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">color: rgb(2, 2, 2);
+background-color: transparent; /* no afectar el fondo interno */</string>
+                    </property>
+                    <property name="text">
+                     <string>Lista de surtidores</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QPushButton" name="btnEliminarS">
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="mouseTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::FocusPolicy::NoFocus</enum>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton {
+    background-color: #DB0000;   /* naranja normal */
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+QPushButton:pressed {
+    background-color: #D4881C;   /* naranja más oscuro al presionar */
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>Eliminar</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <spacer name="verticalSpacer_6">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Vertical</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Policy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QFrame" name="frameCombust">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>370</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QFrame#frameCombust {
+    border: 2px solid black;   /* borde verde */
+    border-radius: 10px;         /* esquinas redondeadas */
+	background-color: rgb(0, 162, 243);
+}
+</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::Shape::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Shadow::Raised</enum>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_4">
+                  <item row="1" column="0" rowspan="4">
+                   <widget class="QTableWidget" name="tblCombustibles">
+                    <property name="maximumSize">
+                     <size>
+                      <width>900</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QTableWidget::item:selected {
+    background-color: rgb(51, 55, 59);  /* el mismo turquesa que en el header */
+    color: white;                         /* texto blanco para contraste */
+}
+QHeaderView::section {
+    background-color: rgb(96, 206, 218); /* fondo turquesa */
+                      /* texto oscuro para buen contraste */
+    font-weight: bold;
+    padding: 6px;
+    border: 1px solid #CCCCCC;
+}
+
+QTableWidget {
+    gridline-color: #444;
+    background-color: #FFFFFF;  /* fondo de la tabla (oscuro) */
+    color: #33373B;             /* texto claro */
+	border-radius: 8px;
+}</string>
+                    </property>
+                    <property name="rowCount">
+                     <number>8</number>
+                    </property>
+                    <attribute name="horizontalHeaderCascadingSectionResizes">
+                     <bool>false</bool>
+                    </attribute>
+                    <attribute name="horizontalHeaderDefaultSectionSize">
+                     <number>217</number>
+                    </attribute>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <row/>
+                    <column>
+                     <property name="text">
+                      <string>id_inventario</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>id_Tanque</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Fecha</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Litros disponibles</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QPushButton" name="btnAgregarC">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>100</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="mouseTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::FocusPolicy::NoFocus</enum>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton {
+    background-color: #2ABF9E;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+QPushButton:pressed {
+ background-color: #239D81;
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>Agregar</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="1">
+                   <widget class="QPushButton" name="btnEditarC">
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="mouseTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::FocusPolicy::NoFocus</enum>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton {
+    background-color: #FFba6a;   /* naranja normal */
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+QPushButton:pressed {
+    background-color: #D4881C;   /* naranja más oscuro al presionar */
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>Editar</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="lblEstadoTurno_5">
+                    <property name="minimumSize">
+                     <size>
+                      <width>40</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>10</pointsize>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">color: rgb(2, 2, 2);
+background-color: transparent; /* no afectar el fondo interno */</string>
+                    </property>
+                    <property name="text">
+                     <string>Lista de Combustibles</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="3" column="1">
+                   <widget class="QPushButton" name="btnEliminarC">
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="cursor">
+                     <cursorShape>PointingHandCursor</cursorShape>
+                    </property>
+                    <property name="mouseTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::FocusPolicy::NoFocus</enum>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton {
+    background-color: #DB0000;   /* naranja normal */
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+QPushButton:pressed {
+    background-color: #D4881C;   /* naranja más oscuro al presionar */
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>Eliminar</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="personal_widget">
+          <widget class="QLabel" name="label_16">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>20</y>
+             <width>721</width>
+             <height>81</height>
+            </rect>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>81</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(51, 55, 59);</string>
+           </property>
+           <property name="text">
+            <string>Gestión del personal</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
+          </widget>
+         </widget>
         </widget>
        </item>
       </layout>
@@ -1109,6 +1977,10 @@ QPushButton:pressed {
     <property name="title">
      <string>Administración</string>
     </property>
+    <addaction name="btnInfraestructura"/>
+    <addaction name="actionPersonal"/>
+    <addaction name="actionClientes"/>
+    <addaction name="actionConfiguraci_n"/>
    </widget>
    <widget class="QMenu" name="menuReportes">
     <property name="title">
@@ -1188,6 +2060,26 @@ QPushButton:pressed {
   <action name="btnPrincipal">
    <property name="text">
     <string>Inicio</string>
+   </property>
+  </action>
+  <action name="btnInfraestructura">
+   <property name="text">
+    <string>Infraestructura</string>
+   </property>
+  </action>
+  <action name="actionPersonal">
+   <property name="text">
+    <string>Personal</string>
+   </property>
+  </action>
+  <action name="actionClientes">
+   <property name="text">
+    <string>Clientes</string>
+   </property>
+  </action>
+  <action name="actionConfiguraci_n">
+   <property name="text">
+    <string>Configuración</string>
    </property>
   </action>
  </widget>

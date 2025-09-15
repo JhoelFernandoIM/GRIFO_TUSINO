@@ -1,6 +1,7 @@
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile, QIODevice
 
+from windows.infra_widget import GestionInfraestructura
 from windows.registro import RegistroWindow
 from windows.turnos_window import GestionTurno
 from windows.ventas_window import RegistroVenta
@@ -32,11 +33,13 @@ class MainWindow(QMainWindow):
         self.initGUI()
         self.showMaximized()  # <- mostrar la instancia QMainWindow, no el child
 
+    #Aqui conectamos el boton pra que jale ela funcion de abajo
     def initGUI(self):
         self.main.btnPrincipal.triggered.connect(self.volverPrincipal)
         self.main.btnRegistrar_Transferencias.triggered.connect(self.abrirRegistro)
         self.main.btnVentas.triggered.connect(self.abrirVentas)
         self.main.btnTurnos.triggered.connect(self.abrirTurnos)
+        self.main.btnInfraestructura.triggered.connect(self.abrirInfraestructura)
         
 
 #aqui ponemos las funciones que instancian cada modulo para ejecutarlos
@@ -61,7 +64,15 @@ class MainWindow(QMainWindow):
         self.gestionTurno = GestionTurno(self.main.stackedWidget)
         self.gestionTurno.show()
 
-    #Volver principal
+    #Abrir stacked widget: Infraestructura
+    def abrirInfraestructura(self):
+        self.gestionInfraestructura = GestionInfraestructura(self.main.stackedWidget)
+        self.gestionInfraestructura.show()
+
+
+
+
+#Volver principal
     def volverPrincipal(self):
         self.page_index = 0
         self.main.stackedWidget.setCurrentIndex(self.page_index)
